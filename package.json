@@ -5,6 +5,7 @@
 	"engines": {
 		"node": ">=20.0.0",
 		"bun": ">=1.3.5"
+		"bun": ">=1.3.5"
 	},
 	"scripts": {},
 	"repository": {
@@ -23,4 +24,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.10"
 	}
+	"packageManager": "bun@1.3.5",
 }
+		"@biomejs/biome": "^2.3.10",

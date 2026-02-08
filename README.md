@@ -2,8 +2,6 @@
 
 一个全能的歌词转换器，同时支持下载各大平台的歌词
 
-## 特色功能
-
 * 支持所有主流的歌词转换，包括但不限于：
     * ASS
     * TTML
@@ -26,5 +24,3 @@
 * 支持与 [AMLL Player](https://github.com/amll-dev/applemusic-like-lyrics/blob/full-refractor/packages/player/README.md) 的 WS 功能联动
 
 ## 许可
-
-[MIT](LICENSE)

@@ -4,17 +4,28 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   build-and-release:
-    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            artifact_name: Unilyric.exe
+            asset_name: Unilyric-windows-x64.exe
+          - os: macos-latest
+            artifact_name: Unilyric
+            asset_name: Unilyric-macos-aarch64
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: 检出代码
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: 安装 Bun
         uses: oven-sh/setup-bun@v2
@@ -33,8 +44,14 @@ jobs:
       - name: 构建项目
         run: cargo build --release --package Unilyric
 
+      - name: 重命名构建产物
+        shell: bash
+        run: |
+          mv target/release/${{ matrix.artifact_name }} target/release/${{ matrix.asset_name }}
+
       - name: 创建 Release
         uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: target/release/Unilyric.exe
+          files: target/release/${{ matrix.asset_name }}
           generate_release_notes: true

@@ -4,6 +4,7 @@ members = [
     "lyrics_helper_rs",
     "ttml_processor",
     "Unilyric",
+    "smtc_wrapper",
 ]
 
 resolver = "3"

@@ -1,0 +1,10 @@
+[package]
+name = "smtc-suite"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+smtc_real = { git = "https://github.com/apoint123/smtc-suite", package = "smtc-suite" }
